@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+}
+
+#title {
+	width: 100%;
+	height: 2%;
+	text-align: center;
+}
+
+
+.containerInfo {
+			display: flex;
+			justify-content: space-between;
+}
+
+.left-controls {
+			display: flex;
+}
+.middle-controls {
+			display: flex;
+			justify-content: center;
+}
+.right-controls {
+			display: flex;
+			justify-content: flex-end;
+}
+
+#totalBox,#accountBox{
+	width: 10%;
+}
+#coinBox{
+	width: 5%;
+}
+
+#openButton,#passButton,#closeButton{
+	width: 11%;
+}
+.enabled-style {
+	background-color: green;
+	color: black;
+}
+
+#tipsBox {
+  width: 100%;
+}
+
+#goalBox,#failBox,#usdt0Box {
+	width: 8%
+}
+#setupButton{
+	width: 10%;
+}
+
+#container {
+	width: 100%;
+	height: 95%;
+	display: flex;
+}

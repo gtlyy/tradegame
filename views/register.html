@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <script src="../static/js/lib/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/lib/jquery.url.js"></script>
+    <script type="text/javascript" src="../static/js/crypto-js-4.2.0/crypto-js.js"></script>
+</head>
+
+<body>
+    <div id="nav">
+        <div id="nav-login">
+            <ul>
+                <li><a href="/login">登录</a></li>
+                <li><a href="/register">注册</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="htmleaf-container">
+        <div class="wrapper">
+            <!--注册表单-->
+            <div class="container">
+                <h2>Welcome</h2>
+                    用户名称：<input type="text" name="username" placeholder="Username" id="username">
+                    <span id="username-status"></span>
+                    <br>
+                    设置密码：<input type="password" name="password" placeholder="Password" id="register-password">
+                    <br>
+                    确认密码：<input type="password" name="repassword" placeholder="rePassword" id="reenter-password">
+                    <br>
+                    <button id="reg-button" disabled>注 册</button>
+                    <p id="error-message" style="color: red;"></p>
+                    <p id="theid"></p>
+            </div>
+        </div>
+    </div>  
+     
+<script>
+  $(document).ready(function() {
+    var isUsernameAvailable = false; // 追踪用户名是否可用的状态
+
+    // 监听用户名输入框的 input 事件
+    $('#username').on('input', function() {
+      console.log("test check-username...")
+      var username = $(this).val();
+      console.log({ 'username': username })
+      if (username.length <= 45) {
+        $.ajax({
+          url: '/check-username',
+          type: 'POST',
+          data: { 'username': username },
+          success: function(response) {
+            isUsernameAvailable = response.available;
+            console.log(isUsernameAvailable)
+            if (isUsernameAvailable) {
+              // 用户名可用的处理逻辑
+              $('#username-status').text('用户名可用');
+            } else {
+              // 用户名不可用的处理逻辑
+              $('#username-status').text('用户名已存在');
+            }
+            updateRegisterButtonState();
+          }
+        });
+      } else {
+        $('#username-status').text('用户名过长');
+        isUsernameAvailable = false;
+        updateRegisterButtonState();
+      }
+    });
+
+    // 监听密码输入框的 input 事件
+    $('#register-password, #reenter-password').on('input', function() {
+      updateRegisterButtonState();
+    });
+
+    // 更新注册按钮状态
+    function updateRegisterButtonState() {
+      var flag_passwd_ok = false
+      var password = $('#register-password').val();
+      var repassword = $('#reenter-password').val();
+      var errorMessage = document.getElementById("error-message");
+      // 检查密码是否一致
+      if (password !== repassword) {
+          errorMessage.textContent = "Passwords do not match";
+          console.log(flag_passwd_ok);
+      } else {
+          if (password == "") {
+            errorMessage.textContent = "Password is NULL.";
+          } else {
+            errorMessage.textContent = "";
+            console.log("password=repassword");
+            flag_passwd_ok = true;
+          }
+          console.log(flag_passwd_ok)
+      }
+      var isButtonDisabled = !isUsernameAvailable || !flag_passwd_ok;
+      $('#reg-button').prop('disabled', isButtonDisabled);
+    }
+    
+    // 监听button
+    $('#reg-button').on('click', function(event) {
+      // 获取表单数据
+      var username = $('#username').val();
+      var password = $('#register-password').val();
+      var encrypted = CryptoJS.SHA256(password).toString();
+      var data = {'username': username, 'password': encrypted };
+      console.log(data);
+      // 发起 AJAX 请求
+      $.ajax({
+        url: '/register',
+        type: 'POST',
+        data: data,
+        success: function(response) {
+          console.log("success.");
+          console.log("id:"+response.id.toString());
+          $('#theid').text("注册成功，id="+response.id.toString())
+        },
+        error: function(response) {
+          console.log("fail.");
+        }
+      });
+      
+      $('#username').val("");
+      $('#username-status').text("")
+      $('#register-password').val("");
+      $('#reenter-password').val("");
+      $('#reg-button').prop('disabled', true);
+    });
+
+  });
+</script>
+ 
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆</title>
+    <script src="../static/js/lib/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/lib/jquery.url.js"></script>
+    <script type="text/javascript" src="../static/js/crypto-js-4.2.0/crypto-js.js"></script>
+</head>
+<body>
+    <div id="nav">
+        <div id="nav-login">
+            <ul>
+                <li><a href="/login">登录</a></li>
+                <li><a href="/register">注册</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="htmleaf-container">
+        <div class="wrapper">
+            <!--注册表单-->
+            <div class="container">
+                <h1>Welcome</h1>
+                用户名称：<input type="text" name="username" placeholder="Username" id="username">
+                <br>
+                登陆密码：<input type="password" name="password" placeholder="Password" id="password">
+                <br>
+                <button id="login-button" disable>登 陆</button>
+            </div>
+        </div>
+    </div>  
+    
+    <p>测试账户：test / #123457& </p>
+    
+<script>
+  $(document).ready(function() {  
+    // 监听button
+    $('#login-button').on('click', function(event) {
+      // 获取表单数据
+      var username = $('#username').val();
+      var password = $('#password').val();
+      var encrypted = CryptoJS.SHA256(password).toString();
+      var data = {'username': username, 'password': encrypted };
+      console.log(data);
+      // 发起 AJAX 请求
+      $.ajax({
+        url: '/login',
+        type: 'POST',
+        data: data,
+        success: function(response) {
+          if(response.result) {
+            console.log("success.");
+            console.log("to"+response.redirect)
+            window.location.href = response.redirect;
+          }else{
+            console.log("fail.");
+            console.log(response.result, response.err)
+            $('#username').val("")
+            $('#password').val("")
+          }
+        },
+        error: function(response) {
+          console.log("fail.");
+          // 重来
+        }
+      });  // AJAX
+    });    // button - click
+  });
+</script>    
+
+<script>
+    var passwordInput = document.getElementById("password");
+    var loginButton = document.getElementById("login-button");
+    
+    passwordInput.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            loginButton.click();
+        }
+    });
+</script>
+     
+</body>
+</html>

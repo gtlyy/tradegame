@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TradeGame By Lizhidi.</title>
+    <script src="../static/js/lib/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/lib/jquery.url.js"></script>
+    <script type="text/javascript" src="../static/js/crypto-js-4.2.0/crypto-js.js"></script>
+</head>
+<body>
+<body>
+<p>Hi {{.userName}}.</p>
+<script>user={{.userName}}</script>
+ <br>
+  开启模拟交易游戏：<a href="/trade">TradeGame</a>
+  
+
+<br><br>
+<pre>
+注意: 
+1. 涨停一般无法买入，跌停反之，这里没有作限制。自行pass或当敢死队。
+2. 买入、卖出点只是取上一条k线的close价格，没有考虑滑点、跳开等。
+3. 其他......
+</pre>
+
+本项目开源: github.com/gtlyy/tradegame
+
+</body>
+</html>
