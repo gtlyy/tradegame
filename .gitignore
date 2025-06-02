@@ -1,3 +1,4 @@
 tradegame
 logs/app.log
 logs/*.log
+testdb_backup.sql
