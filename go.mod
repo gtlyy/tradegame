@@ -10,7 +10,7 @@ require (
 	github.com/go-sql-driver/mysql v1.9.2
 	github.com/google/uuid v1.6.0
 	github.com/gtlyy/myfun v0.0.4
-	github.com/gtlyy/myokx v0.0.8
+	github.com/gtlyy/myokx v0.1.1
 	github.com/gtlyy/myrabbitmq v0.0.0-20250521141049-76c0915d1f07
 	github.com/gtlyy/mytime v0.0.0-20250407141634-71a33f09697f
 	github.com/smartystreets/goconvey v1.8.1

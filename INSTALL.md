@@ -1,4 +1,4 @@
-# Install
+# Install (Linux & Windows)
 
 ## 1. MariaDB
 ### Install MariaDB

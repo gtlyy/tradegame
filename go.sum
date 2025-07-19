@@ -73,8 +73,8 @@ github.com/gopherjs/gopherjs v1.17.2 h1:fQnZVsXk8uxXIStYb0N4bGk7jeyTalG/wsZjQ25d
 github.com/gopherjs/gopherjs v1.17.2/go.mod h1:pRRIvn/QzFLrKfvEz3qUuEhtE/zLCWfreZ6J5gM2i+k=
 github.com/gtlyy/myfun v0.0.4 h1:CwefoIdUjf+14YvOsSuFRDBP2CSqbJESUAaAlJ4r86Q=
 github.com/gtlyy/myfun v0.0.4/go.mod h1:rd6tTqsG/4uvwlCdl4nTc9b2R/P6RwzrdldshnyZh/g=
-github.com/gtlyy/myokx v0.0.8 h1:3bvdUXbGP4WVVQv3/inHXiuW18UeakGU5IgbCSnkya0=
-github.com/gtlyy/myokx v0.0.8/go.mod h1:WAHXUFzsfuoOtxlsuZ6Ok1fjYmyZVlfG9pH11159Shc=
+github.com/gtlyy/myokx v0.1.1 h1:O9rnTN91lwlQDV2Rd6bBcIxgZjyJfw9AMF84tkiFIN8=
+github.com/gtlyy/myokx v0.1.1/go.mod h1:WAHXUFzsfuoOtxlsuZ6Ok1fjYmyZVlfG9pH11159Shc=
 github.com/gtlyy/myrabbitmq v0.0.0-20250521141049-76c0915d1f07 h1:l94VBuhd6su7akawriUQdvX5hTjAR5JSLrnw9dTEgCs=
 github.com/gtlyy/myrabbitmq v0.0.0-20250521141049-76c0915d1f07/go.mod h1:UWce1CwUGl+/jOevlXnDosmuBzK6uxPtWUL0mdqOS8c=
 github.com/gtlyy/mytime v0.0.0-20250407141634-71a33f09697f h1:wLSPB7YKUotuILO/Ix9BMdpQVXvUugkapYrqbS5sL1A=
